@@ -45,6 +45,7 @@ class Kiwoom(QAxWidget):
 
     def comm_rq_data(self, rqname, trcode, next, screen_no):
         self.dynamicCall("CommRqData(QString, QString, int, QString)", rqname, trcode, next, screen_no)
+        self.tr_event_loop = QEventLoop()
         self.tr_event_loop.exec_()
 
     def _comm_get_data(self, code, real_type, field_name, index, item, item_name):
@@ -98,5 +99,5 @@ if __name__ == "__main__":
         kiwoom.set_input_value("종목코드", "039490")
         kiwoom.set_input_value("기준일자", "20170224")
         kiwoom.set_input_value("수정주가구분", "1")
-        kiwoom.comm_rq_data("opt10081_req", "opt10081", 0, "0101")
+        kiwoom.comm_rq_data("opt10081_req", "opt10081", 2, "0101")
         
